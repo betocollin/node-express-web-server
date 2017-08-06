@@ -13,10 +13,10 @@ hbs.registerHelper('getFullYear', (optAg) => {
 app.set('view engine', 'hbs');
 
 app.use((req, res, next) => {
-    const logEntry = `${new Date().toString()} ${req.method}${req.url}`;
-    // fs.appendFileSync('server.log', logEntry + '\n', (e) => {
-    //     console.log(e);
-    // });
+    const logEntry = `${new Date().toString()} ${req.method} ${req.url}`;
+    fs.appendFile('server.log', logEntry + '\n', (error) => {
+        if (error) console.log(error);
+    });
     next();
 });
 
