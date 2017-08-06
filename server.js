@@ -40,6 +40,8 @@ app.get('/about', (request, response) => {
     });
 });
 
+//test
+
 app.get('/bad', (req, res) => {
     res.send({
         error: 'bad boy'
