@@ -2,8 +2,8 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
-let app = express();
 const port = process.env.PORT || 3000;
+let app = express();
 
 hbs.registerPartials(`${__dirname}/views/partials`);
 hbs.registerHelper('getFullYear', (optAg) => {
@@ -12,7 +12,6 @@ hbs.registerHelper('getFullYear', (optAg) => {
 
 app.set('view engine', 'hbs');
 
-
 app.use((req, res, next) => {
     const logEntry = `${new Date().toString()} ${req.method}${req.url}`;
     fs.appendFileSync('server.log', logEntry + '\n', (e) => {
@@ -20,10 +19,6 @@ app.use((req, res, next) => {
     });
     next();
 });
-
-// app.use((req, res, next) => {
-//     res.render('maintenance.hbs');
-// });
 
 app.use(express.static(`${__dirname}/public`));
 
@@ -39,8 +34,6 @@ app.get('/about', (request, response) => {
         title: 'About me'
     });
 });
-
-//test
 
 app.get('/bad', (req, res) => {
     res.send({
