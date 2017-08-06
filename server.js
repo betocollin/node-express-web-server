@@ -14,9 +14,9 @@ app.set('view engine', 'hbs');
 
 app.use((req, res, next) => {
     const logEntry = `${new Date().toString()} ${req.method}${req.url}`;
-    fs.appendFileSync('server.log', logEntry + '\n', (e) => {
-        console.log(e);
-    });
+    // fs.appendFileSync('server.log', logEntry + '\n', (e) => {
+    //     console.log(e);
+    // });
     next();
 });
 
